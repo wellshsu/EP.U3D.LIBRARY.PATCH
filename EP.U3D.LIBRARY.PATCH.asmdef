@@ -7,7 +7,6 @@
         "EP.U3D.LIBRARY.ASSET",
         "EP.U3D.LIBRARY.UI",
         "EP.U3D.LIBRARY.REPORT",
-        "EP.U3D.LIBRARY.LUA",
         "EP.U3D.LIBRARY.JSON"
     ],
     "includePlatforms": [],
