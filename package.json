@@ -2,7 +2,7 @@
   "name": "ep.u3d.library.patch",
   "displayName": "EP.U3D.LIBRARY.PATCH",
   "description": "Patch module.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "unity": "2019.2",
   "unityRelease": "0a12",
   "relatedPackages": {},
@@ -17,13 +17,5 @@
     "email": "wellshsu@outlook.com",
     "url": "https://github.com/wellshsu"
   },
-  "type": "library",
-  "dependencies": {
-    "ep.u3d.library.base": "0.0.1",
-    "ep.u3d.library.net": "0.0.2",
-    "ep.u3d.library.asset": "0.0.2",
-    "ep.u3d.library.ui": "0.0.2",
-    "ep.u3d.library.report": "0.0.2",
-    "ep.u3d.library.json": "0.0.1"
-  }
+  "type": "library"
 }
