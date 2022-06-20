@@ -1,0 +1,22 @@
+{
+    "name": "EP.U3D.LIBRARY.PATCH",
+    "rootNamespace": "",
+    "references": [
+        "EP.U3D.LIBRARY.BASE",
+        "EP.U3D.LIBRARY.NET",
+        "EP.U3D.LIBRARY.ASSET",
+        "EP.U3D.LIBRARY.UI",
+        "EP.U3D.LIBRARY.REPORT",
+        "EP.U3D.LIBRARY.LUA",
+        "EP.U3D.LIBRARY.JSON"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
