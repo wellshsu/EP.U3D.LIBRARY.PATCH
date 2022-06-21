@@ -49,8 +49,8 @@ namespace EP.U3D.LIBRARY.PATCH
         {
             AssetManager.Initialize();
             GameObject go = null;
-            if (AssetManager.OK) go = AssetManager.LoadAsset(PREFAB_PATH, typeof(GameObject)) as GameObject; // 优先加载bundle
-            if (go == null) go = AssetManager.LoadAsset(PREFAB_PATH, typeof(GameObject), true) as GameObject; // 否则加载resources
+            if (AssetManager.OK) go = AssetManager.LoadAsset(Constants.UPDATER_PREFAB_PATH, typeof(GameObject)) as GameObject; // 优先加载bundle
+            if (go == null) go = AssetManager.LoadAsset(Constants.UPDATER_PREFAB_PATH, typeof(GameObject), true) as GameObject; // 否则加载resources
             UIHelper.CloneGO(go);
             OnStarted += onStarted;
             OnFinished += onFinished;
@@ -506,7 +506,6 @@ namespace EP.U3D.LIBRARY.PATCH
         #endregion
 
         #region UI Logic
-        public static string PREFAB_PATH = "Resources/Bundle/Updater";
         public GameObject UIBG;
         public GameObject UIUpdate;
         public GameObject UIConfirm;
@@ -589,7 +588,7 @@ namespace EP.U3D.LIBRARY.PATCH
         public virtual void OnDestroy()
         {
             Instance = null;
-            AssetManager.UnloadAsset(PREFAB_PATH);
+            AssetManager.UnloadAsset(Constants.UPDATER_PREFAB_PATH);
         }
 
         public virtual void OpenBG()
