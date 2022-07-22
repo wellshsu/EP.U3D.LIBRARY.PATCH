@@ -112,7 +112,7 @@ namespace EP.U3D.LIBRARY.PATCH
             // ensure local asset is ok.
             if (LocalAssetManifest.FileInfos.Count == 0)
             {
-                yield return Loom.StartCR(Extract(LocalAssetManifest, Constants.LOCAL_ASSET_BUNDLE_PATH, Constants.STREAMING_ASSET_BUNDLE_PATH));
+                yield return Loom.StartCR(Extract(StreamingAssetManifest, Constants.LOCAL_ASSET_BUNDLE_PATH, Constants.STREAMING_ASSET_BUNDLE_PATH));
                 // reload asset manifest.
                 LocalAssetManifest = new FileManifest(Constants.LOCAL_ASSET_BUNDLE_PATH, Constants.MANIFEST_FILE);
                 yield return LocalAssetManifest.Initialize(false, false);
@@ -124,7 +124,7 @@ namespace EP.U3D.LIBRARY.PATCH
             // ensure local ilr script is ok.
             if (LocalILRManifest.FileInfos.Count == 0)
             {
-                yield return Loom.StartCR(Extract(LocalILRManifest, Constants.LOCAL_ILR_BUNDLE_PATH, Constants.STREAMING_ILR_BUNDLE_PATH));
+                yield return Loom.StartCR(Extract(StreamingILRManifest, Constants.LOCAL_ILR_BUNDLE_PATH, Constants.STREAMING_ILR_BUNDLE_PATH));
                 // reload ilr script manifest.
                 LocalILRManifest = new FileManifest(Constants.LOCAL_ILR_BUNDLE_PATH, Constants.MANIFEST_FILE);
                 yield return LocalILRManifest.Initialize(false, false);
@@ -135,7 +135,7 @@ namespace EP.U3D.LIBRARY.PATCH
             // ensure local lua script is ok.
             if (LocalLUAManifest.FileInfos.Count == 0)
             {
-                yield return Loom.StartCR(Extract(LocalLUAManifest, Constants.LOCAL_LUA_BUNDLE_PATH, Constants.STREAMING_LUA_BUNDLE_PATH));
+                yield return Loom.StartCR(Extract(StreamingLUAManifest, Constants.LOCAL_LUA_BUNDLE_PATH, Constants.STREAMING_LUA_BUNDLE_PATH));
                 // reload lua script manifest.
                 LocalLUAManifest = new FileManifest(Constants.LOCAL_LUA_BUNDLE_PATH, Constants.MANIFEST_FILE);
                 yield return LocalLUAManifest.Initialize(false, false);

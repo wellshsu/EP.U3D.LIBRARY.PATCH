@@ -626,6 +626,20 @@ namespace EP.U3D.LIBRARY.PATCH
             UIHelper.SetLabelText(Instance.UIBG, "LB_Tips", tips);
         }
 
+        public virtual void SetProgress(float progress, string text = "", bool status = true)
+        {
+            UIHelper.SetActiveState(Instance.UIUpdate, "GRP_Progress", status);
+            if (status)
+            {
+                UIHelper.SetLabelText(Instance.UIUpdate, "GRP_Progress/LB_Percentage", string.IsNullOrEmpty(text) ? string.Format("{0}%", (progress * 100).ToString("#0.00")) : text);
+                if (Instance.updateProgressBar == null)
+                {
+                    Instance.updateProgressBar = UIHelper.GetComponent(Instance.UIUpdate, "GRP_Progress", typeof(Slider)) as Slider;
+                }
+                Instance.updateProgressBar.value = progress;
+            }
+        }
+
         public virtual void SetUpdateProgress(int current, int total, bool status = true)
         {
             UIHelper.SetActiveState(Instance.UIUpdate, "GRP_Progress", status);
