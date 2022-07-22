@@ -511,6 +511,8 @@ namespace EP.U3D.LIBRARY.PATCH
         public GameObject UIConfirm;
 
         private Slider updateProgressBar;
+        private bool updateProgressSig;
+        private float updateProgressValue;
         private bool versionPressed;
         private float versionPressedTime = -1;
         private float versionPressedKeep = -1;
@@ -583,6 +585,12 @@ namespace EP.U3D.LIBRARY.PATCH
                     UIHelper.SetLocalScale(versionLB, new Vector3(1.1f, 1.1f, 1.1f));
                 }
             }
+            if (updateProgressSig)
+            {
+                var speed = (updateProgressValue - updateProgressBar.value) * 50;
+                if (speed < 0) speed = 1;
+                updateProgressBar.value = Mathf.Lerp(updateProgressBar.value, updateProgressValue, Time.deltaTime * speed);
+            }
         }
 
         public virtual void OnDestroy()
@@ -628,20 +636,22 @@ namespace EP.U3D.LIBRARY.PATCH
 
         public virtual void SetProgress(float progress, string text = "", bool status = true)
         {
+            updateProgressSig = status;
             UIHelper.SetActiveState(Instance.UIUpdate, "GRP_Progress", status);
             if (status)
             {
-                UIHelper.SetLabelText(Instance.UIUpdate, "GRP_Progress/LB_Percentage", string.IsNullOrEmpty(text) ? string.Format("{0}%", (progress * 100).ToString("#0.00")) : text);
+                UIHelper.SetLabelText(Instance.UIUpdate, "GRP_Progress/LB_Percentage", string.IsNullOrEmpty(text) ? string.Format("{0}%", Mathf.FloorToInt(progress * 100)) : text);
                 if (Instance.updateProgressBar == null)
                 {
                     Instance.updateProgressBar = UIHelper.GetComponent(Instance.UIUpdate, "GRP_Progress", typeof(Slider)) as Slider;
                 }
-                Instance.updateProgressBar.value = progress;
+                Instance.updateProgressValue = progress;
             }
         }
 
         public virtual void SetUpdateProgress(int current, int total, bool status = true)
         {
+            updateProgressSig = status;
             UIHelper.SetActiveState(Instance.UIUpdate, "GRP_Progress", status);
             if (status)
             {
@@ -657,7 +667,7 @@ namespace EP.U3D.LIBRARY.PATCH
                 {
                     Instance.updateProgressBar = UIHelper.GetComponent(Instance.UIUpdate, "GRP_Progress", typeof(Slider)) as Slider;
                 }
-                Instance.updateProgressBar.value = (current * 1f / total);
+                Instance.updateProgressValue = (current * 1f / total);
             }
         }
 
